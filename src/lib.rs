@@ -5,7 +5,7 @@ pub struct Color {
     pub b: u8,
 }
 
-pub trait SmartLedWrite {
+pub trait SmartLedsWrite {
     type Error;
     fn write<T>(&mut self, iterator: T) -> Result<(), Self::Error>
     where

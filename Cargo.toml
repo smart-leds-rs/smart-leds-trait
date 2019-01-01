@@ -1,5 +1,5 @@
 [package]
-name = "smart-led-trait"
+name = "smart-leds-trait"
 version = "0.1.0"
 authors = ["David Sawatzke <david-sawatzke@users.noreply.github.com>"]
 edition = "2018"
