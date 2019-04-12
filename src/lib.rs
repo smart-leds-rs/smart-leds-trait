@@ -1,10 +1,17 @@
 #![no_std]
 
-pub type Color = rgb::RGB8;
+pub use {rgb::RGB, rgb::RGB16, rgb::RGB8, rgb::RGBA};
+
+pub struct White<C>(pub C);
+
+pub type RGBW<ComponentType, WhiteComponentType = ComponentType> =
+    RGBA<ComponentType, White<WhiteComponentType>>;
 
 pub trait SmartLedsWrite {
     type Error;
-    fn write<T>(&mut self, iterator: T) -> Result<(), Self::Error>
+    type Color;
+    fn write<T, I>(&mut self, iterator: T) -> Result<(), Self::Error>
     where
-        T: Iterator<Item = Color>;
+        T: Iterator<Item = I>,
+        I: Into<Self::Color>;
 }
