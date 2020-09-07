@@ -14,6 +14,7 @@
 
 pub use {rgb::RGB, rgb::RGB16, rgb::RGB8, rgb::RGBA};
 
+#[derive(Copy, Clone, Debug, Default, Eq, PartialEq, Ord, PartialOrd, Hash)]
 pub struct White<C>(pub C);
 
 /// The RGBW Pixel
