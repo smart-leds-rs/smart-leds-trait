@@ -15,3 +15,6 @@ repository = "https://github.com/smart-leds-rs/smart-leds-trait"
 
 [dependencies]
 rgb = "0.8"
+
+[features]
+serde = ["rgb/serde"]
