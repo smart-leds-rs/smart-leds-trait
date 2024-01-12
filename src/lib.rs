@@ -32,6 +32,6 @@ pub trait SmartLedsWrite {
     type Color;
     fn write<T, I>(&mut self, iterator: T) -> Result<(), Self::Error>
     where
-        T: Iterator<Item = I>,
+        T: IntoIterator<Item = I>,
         I: Into<Self::Color>;
 }
