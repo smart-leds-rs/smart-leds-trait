@@ -15,6 +15,7 @@ repository = "https://github.com/smart-leds-rs/smart-leds-trait"
 
 [dependencies]
 rgb = "0.8"
+embedded-hal-async = "1.0"
 
 [features]
 serde = ["rgb/serde"]

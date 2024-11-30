@@ -12,6 +12,9 @@
 //! crate, which contains various convenience functions.
 #![no_std]
 
+pub mod asynch;
+pub mod blocking;
+
 pub use {rgb::RGB, rgb::RGB16, rgb::RGB8, rgb::RGBA};
 
 #[derive(Copy, Clone, Debug, Default, Eq, PartialEq, Ord, PartialOrd, Hash)]
@@ -22,16 +25,3 @@ pub struct White<C>(pub C);
 /// This is used for leds, that in addition to RGB leds also contain a white led
 pub type RGBW<ComponentType, WhiteComponentType = ComponentType> =
     RGBA<ComponentType, White<WhiteComponentType>>;
-
-/// A trait that smart led drivers implement
-///
-/// The amount of time each iteration of `iterator` might take is undefined.
-/// Drivers, where this might lead to issues, aren't expected to work in all cases.
-pub trait SmartLedsWrite {
-    type Error;
-    type Color;
-    fn write<T, I>(&mut self, iterator: T) -> Result<(), Self::Error>
-    where
-        T: IntoIterator<Item = I>,
-        I: Into<Self::Color>;
-}
