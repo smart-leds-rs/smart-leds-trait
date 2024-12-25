@@ -43,7 +43,7 @@ pub mod asynch {
     ///
     /// The amount of time each iteration of `iterator` might take is undefined.
     /// Drivers, where this might lead to issues, aren't expected to work in all cases.
-    pub trait SmartLedsWrite {
+    pub trait SmartLedsWriteAsync {
         type Error;
         type Color;
         fn write<T, I>(&mut self, iterator: T) -> impl Future<Output = Result<(), Self::Error>>
