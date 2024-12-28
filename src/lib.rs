@@ -36,7 +36,7 @@ pub trait SmartLedsWrite {
         I: Into<Self::Color>;
 }
 
-pub mod asynch {
+pub mod async {
     use core::future::Future;
 
     /// An async trait that Smart Led Drivers implement
