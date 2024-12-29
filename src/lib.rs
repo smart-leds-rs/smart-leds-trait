@@ -23,19 +23,27 @@ pub struct White<C>(pub C);
 pub type RGBW<ComponentType, WhiteComponentType = ComponentType> =
     RGBA<ComponentType, White<WhiteComponentType>>;
 
-/// A trait that Smart Led Drivers implement
-///
-/// The amount of time each iteration of `iterator` might take is undefined.
-/// Drivers, where this might lead to issues, aren't expected to work in all cases.
-pub trait SmartLedsWrite {
-    type Error;
-    type Color;
-    fn write<T, I>(&mut self, iterator: T) -> Result<(), Self::Error>
-    where
-        T: IntoIterator<Item = I>,
-        I: Into<Self::Color>;
+#[cfg(feature = "blocking")]
+pub mod blocking {
+    /// A trait that Smart Led Drivers implement
+    ///
+    /// The amount of time each iteration of `iterator` might take is undefined.
+    /// Drivers, where this might lead to issues, aren't expected to work in all cases.
+    pub trait SmartLedsWrite {
+        type Error;
+        type Color;
+        fn write<T, I>(&mut self, iterator: T) -> Result<(), Self::Error>
+        where
+            T: IntoIterator<Item = I>,
+            I: Into<Self::Color>;
+    }
 }
 
+// for backwards compatibility
+#[cfg(feature = "blocking")]
+pub use blocking::SmartLedsWrite;
+
+#[cfg(feature = "async")]
 pub mod asynch {
     /// An async trait that Smart Led Drivers implement
     ///

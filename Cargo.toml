@@ -17,4 +17,10 @@ repository = "https://github.com/smart-leds-rs/smart-leds-trait"
 rgb = "0.8"
 
 [features]
+default = [ "blocking" ]
+blocking = []
+async = []
 serde = ["rgb/serde"]
+
+[package.metadata.docs.rs]
+all-features = true
