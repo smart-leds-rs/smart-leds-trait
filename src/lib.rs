@@ -12,17 +12,6 @@
 //! crate, which contains various convenience functions.
 #![no_std]
 
-pub use {rgb::RGB, rgb::RGB16, rgb::RGB8, rgb::RGBA};
-
-#[derive(Copy, Clone, Debug, Default, Eq, PartialEq, Ord, PartialOrd, Hash)]
-pub struct White<C>(pub C);
-
-/// The RGBW Pixel
-///
-/// This is used for leds, that in addition to RGB leds also contain a white led
-pub type RGBW<ComponentType, WhiteComponentType = ComponentType> =
-    RGBA<ComponentType, White<WhiteComponentType>>;
-
 /// A trait that Smart Led Drivers implement
 ///
 /// The amount of time each iteration of `iterator` might take is undefined.
