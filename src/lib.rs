@@ -32,7 +32,7 @@ pub trait SmartLedsWrite {
     type Color;
     fn write<T, I>(&mut self, iterator: T) -> Result<(), Self::Error>
     where
-        T: IntoIterator<Item = I>,
+        T: IntoIterator<Item = I, IntoIter: ExactSizeIterator>,
         I: Into<Self::Color>;
 }
 
@@ -56,6 +56,6 @@ pub trait SmartLedsWriteAsync {
     #[allow(async_fn_in_trait)]
     async fn write<T, I>(&mut self, iterator: T) -> Result<(), Self::Error>
     where
-        T: IntoIterator<Item = I>,
+        T: IntoIterator<Item = I, IntoIter: ExactSizeIterator>,
         I: Into<Self::Color>;
 }
