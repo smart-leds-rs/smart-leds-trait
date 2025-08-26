@@ -14,7 +14,7 @@ readme = "README.md"
 repository = "https://github.com/smart-leds-rs/smart-leds-trait"
 
 [dependencies]
-rgb = "0.8"
+rgb = { version = "0.8", default-features = false }
 
 [features]
 serde = ["rgb/serde"]
