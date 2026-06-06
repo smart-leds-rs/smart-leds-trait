@@ -14,12 +14,6 @@
 
 pub use {rgb::RGB8, rgb::RGB16, rgb::Rgb, rgb::Rgba, rgb::Rgbw};
 
-#[deprecated(
-    since = "0.4.0",
-    note = "Use the Rgb struct instead of the Rgb8 struct"
-)]
-pub use rgb::{RGB, RGBA};
-
 #[derive(Copy, Clone, Debug, Default, Eq, PartialEq, Ord, PartialOrd, Hash)]
 pub struct CctWhite<C> {
     pub cold: C,
