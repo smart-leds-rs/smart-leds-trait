@@ -12,29 +12,19 @@
 //! crate, which contains various convenience functions.
 #![no_std]
 
-pub use {rgb::RGB, rgb::RGB16, rgb::RGB8, rgb::RGBA};
+pub use {rgb::RGB8, rgb::RGB16, rgb::Rgb, rgb::Rgba, rgb::Rgbw};
 
 #[derive(Copy, Clone, Debug, Default, Eq, PartialEq, Ord, PartialOrd, Hash)]
-pub struct White<C>(pub C);
-
-#[derive(Copy, Clone, Debug, Default, Eq, PartialEq, Ord, PartialOrd, Hash)]
-pub struct CctWhite<C>{
+pub struct CctWhite<C> {
     pub cold: C,
     pub warm: C,
 }
 
-/// The RGBW Pixel
-///
-/// This is used for leds, that in addition to RGB leds also contain a white led
-pub type RGBW<ComponentType, WhiteComponentType = ComponentType> =
-    RGBA<ComponentType, White<WhiteComponentType>>;
-
-
 /// The RGBCCT Pixel
-/// 
+///
 /// This is used for leds that, in addition to RGB leds, also contain two white leds (cold white and warm white)
 pub type RGBCCT<ComponentType, CctWhiteComponentType = ComponentType> =
-    RGBA<ComponentType, CctWhite<CctWhiteComponentType>>;
+    Rgba<ComponentType, CctWhite<CctWhiteComponentType>>;
 
 /// A trait that Smart Led Drivers implement
 ///
